@@ -18,7 +18,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class MyHomePageState extends State<MyHomePage> {
-  double? _numberFrom;
+  double _numberFrom;
 
   @override
   void initState() {
@@ -33,13 +33,18 @@ class MyHomePageState extends State<MyHomePage> {
         title: const Text('Measures Converter'),
       ),
       body: Center(
-        child: TextField(
-          onChanged: (String text) {
-            setState(() {
-              _numberFrom = double.tryParse(text) ?? _numberFrom;
-            });
-          },
-        ),
+        child: Column(
+          children: [
+            TextField(
+              onChanged: (String text) {
+                setState(() {
+                  _numberFrom = double.tryParse(text) ?? _numberFrom;
+                });
+              },
+            ),
+            Text(_numberFrom.toString()),
+          ],
+        )
       ),
     );
   }
